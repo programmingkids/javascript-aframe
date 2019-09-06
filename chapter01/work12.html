@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work12</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+    <a-sky color="#ECECEC"></a-sky>
+    <a-box color="#AA0000" height="1.5" width="1.5" position="-2 1 -5"></a-box>
+    <a-entity 
+        geometry="primitive:box; height:1.5; width:1.5"
+        material="shader:standard; color:#AA0000"
+        position="2 1 -5">
+    </a-entity>
+    
+    <a-sphere color="#0000AA" radius="0.5" position="-2 3 -5"></a-sphere>
+    <a-entity 
+        geometry="primitive:sphere; radius:0.5"
+        material="shader:standard;color: #0000AA"
+        position="2 3 -5">
+    </a-entity>
+</a-scene>
+</body>
+</html>
