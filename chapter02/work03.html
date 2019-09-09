@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work03</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <img id="floor" src="./../assets/floor-1024.jpg">
+    </a-assets>
+    
+    <a-plane src="#floor" shader="flat" rotation="-90 0 0" scale="5 5 1">
+    </a-plane>
+    
+    <a-cylinder color="#AA0000" radius="0.5" height="2" position="-2 1 0">
+    </a-cylinder>
+    
+    <a-box color="#00AA00" height="2" depth="4" position="2 1 0">
+    </a-box>
+    
+    <a-entity position="0 5 5" rotation="-45 0 0">
+        <a-camera></a-camera>
+    </a-entity>
+</a-scene>
+</body>
+</html>
