@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work02</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <img id="floor" src="./../assets/floor-1024.jpg">
+    </a-assets>
+    <a-sky color="cyan"></a-sky>
+    <a-plane src="#floor" shader="flat" rotation="-90 0 0" scale="5 5 1"></a-plane>
+    <a-entity position="0 0 5">
+        <a-camera></a-camera>
+    </a-entity>
+    
+    <a-box 
+        color="yellow"
+        position="0 0.5 0"
+        animation="
+            property: position;
+            from: -2 0.5 -2;
+            to: -2 0.5 2;
+            loop: true;
+            dir: alternate;
+            dur: 3000;
+            easing: easeInOutCubic">
+    </a-box>
+    <a-box 
+        color="blue"
+        position="0 0.5 0"
+        animation="
+            property: position;
+            from: 2 0.5 2;
+            to: 2 0.5 -2;
+            loop: true;
+            dir: alternate;
+            dur: 2000;
+            easing: easeInOutCubic">
+    </a-box>
+</a-scene>
+</body>
+</html>
