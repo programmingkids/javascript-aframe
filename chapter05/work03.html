@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work03</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+</head>
+<body>
+<a-scene physics="gravity:-9.8; friction: 0.1; restitution: 0.5">
+    <a-assets>
+        <img id="ground" src="./../assets/floor-1024.jpg">
+    </a-assets>
+    <a-plane 
+        src="#ground" 
+        scale="50 50 1" 
+        repeat="5 5 1" 
+        rotation="-90 0 0" static-body></a-plane>
+    <a-box
+        color="#00ff00"
+        position="-2 5 -8"
+        rotation="0 0 -15"
+        height="0.2"
+        width="4"
+        depth="1"
+        static-body></a-box>
+    <a-box
+        color="#00ff00"
+        position="2 3 -8"
+        rotation="0 0 20"
+        height="0.2"
+        width="4"
+        depth="1"
+        static-body></a-box>
+    <a-box
+        color="#ffd507"
+        position="-4 2 -8"
+        height="4"
+        width="0.2"
+        depth="2"
+        static-body></a-box>
+    <a-box
+        color="#ffd507"
+        position="4 2 -8"
+        height="4"
+        width="0.2"
+        depth="2"
+        static-body></a-box>
+    <a-sphere
+        color="#ff0000"
+        radius="0.5"
+        position="-1 7 -8"
+        dynamic-body="mass: 1;">
+    </a-sphere>
+    <a-sphere
+        color="#0000ff" 
+        radius="0.5"
+        position="-3 8 -8"
+        dynamic-body="mass: 100">
+    </a-sphere>
+</a-scene>
+</body>
+</html>
