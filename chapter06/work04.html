@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work04</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+<script>
+// ランダムにカラーコードを生成する関数
+// 例えば「#aabbcc」みたいな6桁のカラーコード
+function getRandomColor() {
+    var letters = "0123456789abcdef";
+    var randomColor = ""; 
+    for (var i = 0; i < 6; i++) {
+        randomColor += letters[Math.floor(Math.random() * 16)];
+    }
+    return "#" + randomColor;
+}
+
+// min以上、max以下の範囲で、ランダムな整数を返す関数
+function getRandomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+var scene;
+
+// ウィンドウの読み込みが完了したら「init」を実行する
+window.onload = init;
+
+// ウィンドウの読み込みが完了したら、実行される関数
+function init() {
+    // <a-scene>のタグを取り出す
+    scene = document.querySelector("a-scene");
+
+    // <a-sphere>のタグを作成
+    var newBall = document.createElement("a-sphere"); 
+
+    // 色を設定
+    newBall.setAttribute("color","#0000ff");
+
+    // 半径の設定
+    newBall.setAttribute("radius","0.5");
+
+    // 位置の設定
+    newBall.setAttribute("position","0 4 -5");
+    
+    // シーンに登録
+    scene.appendChild(newBall);
+}
+</script>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <img id="ground" src="./../assets/floor-1024.jpg">
+    </a-assets>
+
+    <a-plane 
+        src="#ground" 
+        scale="50 50 1" 
+        repeat="5 5 1" 
+        rotation="-90 0 0"></a-plane>
+</a-scene>
+</body>
+</html>
