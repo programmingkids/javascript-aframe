@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work02</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+<script>
+// ランダムにカラーコードを生成する関数
+// 例えば「#aabbcc」みたいな6桁のカラーコード
+function getRandomColor() {
+    var letters = "0123456789abcdef";
+    var randomColor = ""; 
+    for (var i = 0; i < 6; i++) {
+        randomColor += letters[Math.floor(Math.random() * 16)];
+    }
+    return "#" + randomColor;
+}
+
+// min以上、max以下の範囲で、ランダムな整数を返す関数
+function getRandomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// ランダムな位置に移動するAFRAMEコンポーネント
+AFRAME.registerComponent ("random-animation-position", {
+	init: function () {
+	    // オブジェクトを変数に代入する
+	    var element = this.el;
+	    
+	    // アニメーションのfromのX、Y、Zをランダムに作成
+	    var fromX = getRandomRange(-5, 5);
+	    var fromY = getRandomRange(1, 5);
+	    var fromZ = getRandomRange(-10, -5);
+	    // アニメーションのtoのX、Y、Zをランダムに作成
+	    var toX = getRandomRange(-5, 5);
+	    var toY = getRandomRange(1, 5);
+	    var toZ = getRandomRange(-10, -5);
+        
+        // アニメーションの設定を連想配列で作る
+	    var setting = {
+	        property : "position",
+	        from :     fromX + " " + fromY + " " + fromZ,
+	        to :       toX   + " " + toY   + " " + toZ,
+            loop :     true,
+            dir :      "alternate",
+            dur :      1000,
+            easing :   "easeInOutQuad",
+	    };
+	    element.setAttribute("animation",setting);
+	},
+});
+</script>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <img id="ground" src="./../assets/floor-1024.jpg">
+    </a-assets>
+
+    <a-plane 
+        src="#ground" 
+        scale="50 50 1" 
+        repeat="5 5 1" 
+        rotation="-90 0 0"></a-plane>
+    
+    <a-box color="orange" random-animation-position></a-box>
+    <a-box color="purple" random-animation-position></a-box>
+</a-scene>
+</body>
+</html>
