@@ -24,25 +24,17 @@ function getRandomRange(min, max) {
 
 // ランダムな色に変化するアニメーションになるAFRAMEコンポーネント
 AFRAME.registerComponent ("random-animation-color", {
-	init: function () {
-	    // オブジェクトを変数に代入する
-	    var element = this.el;
-	    
-        var fromColor  = getRandomColor();
-        var toColor = getRandomColor();
+    init: function () {
+        // オブジェクトを変数に代入する
+        var element = this.el;
+        // ここに処理を追加します
         
-        // アニメーションの設定を連想配列で作る
-	    var setting = {
-	        property : "color",
-	        from :     fromColor,
-	        to :       toColor,
-            loop :     true,
-            dir :      "alternate",
-            dur :      1000,
-            easing :   "easeInOutQuad",
-	    };
-	    element.setAttribute("animation",setting);
-	},
+        
+        
+        
+        
+        
+    },
 });
 </script>
 </head>

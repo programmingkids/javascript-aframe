@@ -38,16 +38,14 @@ AFRAME.registerComponent ("random-animation-position", {
 	    var toZ = getRandomRange(-10, -5);
         
         // アニメーションの設定を連想配列で作る
-	    var setting = {
-	        property : "position",
-	        from :     fromX + " " + fromY + " " + fromZ,
-	        to :       toX   + " " + toY   + " " + toZ,
-            loop :     true,
-            dir :      "alternate",
-            dur :      1000,
-            easing :   "easeInOutQuad",
-	    };
-	    element.setAttribute("animation",setting);
+
+
+
+
+
+
+
+
 	},
 });
 </script>
@@ -64,8 +62,8 @@ AFRAME.registerComponent ("random-animation-position", {
         repeat="5 5 1" 
         rotation="-90 0 0"></a-plane>
     
-    <a-box color="orange" random-animation-position></a-box>
-    <a-box color="purple" random-animation-position></a-box>
+    <a-box color="orange" ></a-box>
+    <a-box color="purple" ></a-box>
 </a-scene>
 </body>
 </html>

@@ -24,49 +24,49 @@ function getRandomRange(min, max) {
 
 // ランダムな色にアニメーションするAFRAMEコンポーネント
 AFRAME.registerComponent ("random-animation-color", {
-	init: function () {
-	    // オブジェクトを変数に代入する
-	    var element = this.el;
-	    
+    init: function () {
+        // オブジェクトを変数に代入する
+        var element = this.el;
+        
         var fromColor  = getRandomColor();
         var toColor = getRandomColor();
         
         // アニメーションの設定を連想配列で作る
-	    var setting = {
-	        property : "color",
-	        from :     fromColor,
-	        to :       toColor,
+        var setting = {
+            property : "color",
+            from :     fromColor,
+            to :       toColor,
             loop :     true,
             dir :      "alternate",
             dur :      1000,
             easing :   "easeInOutQuad",
-	    };
-	    element.setAttribute("animation__1",setting);
-	},
+        };
+        element.setAttribute("animation__1",setting);
+    },
 });
 
 // ランダムなサイズに変化するアニメーションのAFRAMEコンポーネント
 AFRAME.registerComponent ("random-animation-scale", {
-	init: function () {
-	    // オブジェクトを変数に代入する
-	    var element = this.el;
-	    
-	    // アニメーションのFROMのX、Y、Zをランダムに作成
-	    var from = 0.1;
-	    var to = getRandomRange(1, 1.5);
-
+    init: function () {
+        // オブジェクトを変数に代入する
+        var element = this.el;
+        
+        // アニメーションのFROMのX、Y、Zをランダムに作成
+        var from = 0.1;
+        var to = getRandomRange(1, 1.5);
+        
         // アニメーションの設定を連想配列で作る
-	    var setting = {
-	        property : "scale",
-	        from :     from + " " + from + " " + from,
-	        to :       to   + " " + to   + " " + to,
+        var setting = {
+            property : "scale",
+            from :     from + " " + from + " " + from,
+            to :       to   + " " + to   + " " + to,
             loop :     true,
             dir :      "alternate",
             dur :      1000,
             easing :   "easeInOutQuad",
-	    };
-	    element.setAttribute("animation__2",setting);
-	},
+        };
+        element.setAttribute("animation__2",setting);
+    },
 });
 
 var scene;
@@ -75,15 +75,15 @@ window.onload = init;
 
 function init() {
     // 20個のオブジェクトを作成する
-    for(var i = 0; i < 20; i++) {
-        generateBall();
-    }
+
+
+
 }
 
 function generateBall() {
     // <a-scene>のタグを取り出す
     scene = document.querySelector("a-scene");
-
+    
     // <a-sphere>のタグを作成
     var newBall = document.createElement("a-sphere"); 
     

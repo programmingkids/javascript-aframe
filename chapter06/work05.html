@@ -25,34 +25,29 @@ function getRandomRange(min, max) {
 var scene;
 
 // ウィンドウの読み込みが完了したら「init」を実行する
-window.onload = init;
+
 
 // ウィンドウの読み込みが完了したら、実行される関数
 function init() {
     // <a-scene>のタグを取り出す
     scene = document.querySelector("a-scene");
-
+    
     // <a-sphere>のタグを作成
     var newBall = document.createElement("a-sphere"); 
-
+    
     // 色を設定
     var color = getRandomColor();
     newBall.setAttribute("color",color);
-
+    
     // 位置の設定
     newBall.setAttribute("position","0 4 -5");
     
     // サイズを変更するアニメーション
-    var setting = {
-        property : "scale",
-        from :     "0.1 0.1 0.1",
-        to :       "3 3 3",
-        loop :     true,
-        dir :      "alternate",
-        dur :      1000,
-        easing :   "easeInOutQuad",
-    };
-    newBall.setAttribute("animation",setting);
+    
+    
+    
+    
+    
     
     // シーンに登録
     scene.appendChild(newBall);

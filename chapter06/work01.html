@@ -18,16 +18,13 @@ function getRandomColor() {
 }
 
 // ランダムな色に設定するAFRAMEコンポーネント
-AFRAME.registerComponent ('random-color', {
-	init: function () {
-	    // オブジェクトを変数に代入する
-	    var element = this.el;
-	    // ランダムなカラーコードを作成する
-        var color = getRandomColor();
-        // オブジェクトの色をランダムにする
-        element.setAttribute("color",color);
-	},
-});
+
+
+
+
+
+
+
 </script>
 </head>
 <body>
@@ -45,10 +42,10 @@ AFRAME.registerComponent ('random-color', {
     <a-sphere 
         radius="0.5" 
         position="2 4 -5" 
-        random-color></a-sphere>
+        ></a-sphere>
     <a-box 
         position="-2 4 -5"
-        random-color></a-sphere>
+        ></a-box>
 </a-scene>
 </body>
 </html>
