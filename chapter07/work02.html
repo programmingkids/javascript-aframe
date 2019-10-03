@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>work02</title>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script>
+// ランダムにカラーコードを生成する関数
+// 例えば「#aabbcc」みたいな6桁のカラーコード
+function getRandomColor() {
+    var letters = "0123456789abcdef";
+    var randomColor = ""; 
+    for (var i = 0; i < 6; i++) {
+        randomColor += letters[Math.floor(Math.random() * 16)];
+    }
+    return "#" + randomColor;
+}
+
+// min以上、max以下の範囲で、ランダムな整数を返す関数
+function getRandomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// 四捨五入の関数
+function round(number, precision) {
+    var shift = function (number, precision, reverseShift) {
+        if (reverseShift) {
+            precision = -precision;
+        }  
+        var numArray = ("" + number).split("e");
+        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+    };
+    return shift(Math.round(shift(number, precision, false)), precision, true);
+}
+
+// original component for random color animation
+AFRAME.registerComponent ("random-animation-color", {
+    init: function () {
+        // オブジェクトを変数に代入する
+        var element = this.el;
+        
+        var fromColor  = getRandomColor();
+        var toColor = getRandomColor();
+        
+        // アニメーションの設定を連想配列で作る
+        var setting = {
+            property : "color",
+            from :     fromColor,
+            to :       toColor,
+            loop :     true,
+            dir :      "alternate",
+            dur :      1000,
+            easing :   "easeInOutQuad",
+        };
+        element.setAttribute("animation__color",setting);
+    },
+});
+
+// scene object
+var scene;
+// number of child objects
+var childNum = 12;
+
+window.onload = init;
+
+function generateSphere() {
+    return document.createElement("a-sphere");
+}
+
+function init() {
+    // get scene
+    scene = document.querySelector("a-scene");
+    
+    // create center entity
+    var centerEntity  = document.createElement("a-entity");
+    // set position
+    centerEntity.setAttribute("position","0 10 -50");
+
+    // create rotation animation
+    var anim_rotation = {
+        property : "rotation",
+        from: "0 0 0",
+        to: "0 0 360",
+        loop: true,
+        dur : 2000,
+        dir: "alternate",
+        easing: "linear",
+    };
+    centerEntity.setAttribute("animation__rotation",anim_rotation);
+
+    // create children around center ball
+    for(var i = 0; i < childNum; i++) {
+        // create child object
+        var child = generateSphere();
+        
+        // random-animation-color
+        child.setAttribute("random-animation-color","");
+        
+        // calculate x and y around center
+        var angle = 360 / childNum * i;
+        var child_x = 0 + 1 * Math.cos(angle*(Math.PI/180));
+        var child_y = 0 + 1 * Math.sin(angle*(Math.PI/180));
+        child_x = round(child_x, 5);
+        child_y = round(child_y, 5);
+        var from_position = child_x + " " + child_y + " " + 0;
+        var to_position = child_x*10 + " " + child_y*10 + " " + 40;
+        
+        // z-axis position animation
+        var anim_position = {
+            property: "position",
+            from: from_position,
+            to: to_position,
+            loop: true,
+            dur: 1000,
+            dir: "alternate",
+            easing: "easeInOutQuad",
+        };
+        child.setAttribute("animation__position",anim_position);
+        
+        // scale animation
+        var anim_scale = {
+            property: "scale",
+            from: "1 1 1",
+            to: "3 3 3",
+            loop: true,
+            dur: 1000,
+            dir: "alternate",
+            easing: "easeInOutQuad",
+        };
+        child.setAttribute("animation__scale",anim_scale);
+
+        // add child to center(panrent)
+        centerEntity.appendChild(child);
+    }
+    // add center ball to scene
+    scene.appendChild(centerEntity);
+}
+</script>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <img id="ground" src="./../assets/floor-1024.jpg">
+    </a-assets>
+
+    <a-plane 
+        src="#ground" 
+        scale="50 50 1" 
+        repeat="5 5 1" 
+        rotation="-90 0 0"></a-plane>
+</a-scene>
+</body>
+</html>
